@@ -1,0 +1,21 @@
+{
+  "name": "ledgerx-chaincode",
+  "version": "1.0.0",
+  "description": "LedgerX land registry chaincode",
+  "main": "build/index.js",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "tsc",
+    "start": "fabric-chaincode-node start"
+  },
+  "dependencies": {
+    "fabric-contract-api": "^2.5.4",
+    "fabric-shim": "^2.5.4",
+    "circomlibjs": "0.1.7",
+    "snarkjs": "0.7.6"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}

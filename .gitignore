@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+chaincode-ts/node_modules/
+
+# Compiled output (chaincode is rebuilt by the Dockerfile via CCAAS)
+chaincode-ts/build/
+# NOTE: /build (ZK artifacts: ownership.wasm, ownership_final.zkey,
+# verification_key.json) IS committed so tests + chaincode run without
+# recompiling the circuit on a fresh clone.
+
+# Local tooling / local overrides
+*.log
+.DS_Store
+.env
+.env.*
+*.swp
+
+# Fabric network artifacts (run separately via fabric-samples)
+fabric-samples/
+
+# OS / editor
+.idea/
+.vscode/
+
+# Test/debug scratch
+/tmp/
+checktree.mjs

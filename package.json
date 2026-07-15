@@ -1,0 +1,29 @@
+{
+  "name": "ledgerx",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "setup:zk": "bash scripts/setup_zk.sh",
+    "build:circuit": "circom circuits/ownership.circom --r1cs --wasm --sym -o build",
+    "test": "tsx test/e2e.test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "LedgerX - permissioned land registry with ZK ownership proofs (Phase 1)",
+  "dependencies": {
+    "circomlib": "^2.0.5",
+    "circomlibjs": "^0.1.7",
+    "snarkjs": "^0.7.6"
+  },
+  "devDependencies": {
+    "@types/circomlibjs": "^0.1.6",
+    "@types/node": "^26.1.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.1",
+    "typescript": "^5.9.3"
+  }
+}
