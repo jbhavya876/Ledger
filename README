@@ -1,0 +1,58 @@
+# LedgerX 
+
+A privacy-first, blockchain-anchored ledger built on **Hyperledger Fabric**. LedgerX utilizes **Zero-Knowledge Proofs (ZKPs)** to enable secure, trustless verification of asset ownership—specifically designed to combat real estate fraud without exposing sensitive, underlying personal data.
+
+## Core Features
+
+* **Privacy-First Verification:** Utilizes `circom` and `snarkjs` to generate and verify Zero-Knowledge Proofs. Ownership can be validated mathematically without revealing the actual identity or sensitive property documents on-chain.
+* **Immutable Audit Trail:** Built on Hyperledger Fabric, ensuring that all ownership transitions and verification events are permanently recorded on a permissioned ledger.
+* **TypeScript Chaincode:** Modern, robust smart contract implementation for handling state changes and ZK verification logic directly on the peer nodes.
+* **Pre-Compiled ZK Artifacts:** The repository includes the final `.wasm` and `.zkey` files, meaning the chaincode and tests can be run immediately on a fresh clone without needing to execute a heavy, multi-hour trusted setup phase.
+
+## Repository Structure
+
+* **/chaincode-ts**: Contains the TypeScript smart contracts (chaincode) deployed to the Fabric network.
+* **/circuits**: The `circom` source files defining the constraints for ownership verification.
+* **/build/ownership_js**: Contains the compiled Zero-Knowledge runtime artifacts.
+    * `ownership.wasm`: The WebAssembly witness generator.
+    * `ownership_final.zkey`: The final proving key.
+    * `verification_key.json`: The key used by the chaincode to verify proofs.
+* **/contracts**: Application-level definitions and interfaces.
+* **/scripts**: Utility scripts for network setup, circuit compilation, and deployment.
+* **/test**: Test suites for both the ZK circuits and the Fabric chaincode.
+
+
+## Getting Started
+
+### Prerequisites
+To run this project locally, ensure you have the following installed:
+* [Node.js](https://nodejs.org/) (v18 or higher recommended)
+* [Docker & Docker Compose](https://www.docker.com/) (Required for the Hyperledger Fabric network)
+* *Optional:* [Circom & SnarkJS](https://docs.circom.io/) (Only if you intend to modify and recompile the Zero-Knowledge circuits).
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/jbhavya876/Ledger.git](https://github.com/jbhavya876/Ledger.git)
+   cd Ledger
+Install Chaincode Dependencies:
+
+Bash
+cd chaincode-ts
+npm install
+Run Tests:
+Ensure the ZK logic and chaincode functions behave as expected before deploying:
+
+Bash
+npm test
+(Add instructions here specific to your local fabric-samples setup script, e.g., ./network.sh up createChannel once you have your network deployment automated).
+
+🛠️ Modifying the ZK Circuits
+If you change the logic in the /circuits directory, you will need to regenerate the build artifacts.
+Ensure you have circom and snarkjs installed globally, then run your compilation script. The .gitignore is configured to ignore the heavy intermediate files (.ptau, .r1cs), so only the final runtime .wasm, .zkey, and .json files will be tracked in your next commit.
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Author: Bhavya Jain
