@@ -4,9 +4,11 @@ chaincode-ts/node_modules/
 
 # Compiled output (chaincode is rebuilt by the Dockerfile via CCAAS)
 chaincode-ts/build/
-# NOTE: /build (ZK artifacts: ownership.wasm, ownership_final.zkey,
-# verification_key.json) IS committed so tests + chaincode run without
-# recompiling the circuit on a fresh clone.
+
+/build/*.ptau
+/build/*_0000.zkey
+/build/*.r1cs
+/build/*.sym
 
 # Local tooling / local overrides
 *.log
